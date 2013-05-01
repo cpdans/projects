@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+
+use strict; 
+use warnings;
+
+
+open GD, '<', '/root/acctlist';
+my @acctlist = (<GD>);
+print ($_);
+#print (@acctlist);
+
+#while (my $acctlist) = (@acctlist) {
+#    print $acctlist;
+#}
