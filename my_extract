@@ -6,25 +6,16 @@ use warnings;
 
 open GD, '<', '/root/acctlist';
 my @acctlist = (<GD>);
-#print ($_);
-chomp @acctlist;
-print "@acctlist\n";
+foreach my $acct (@acctlist) {print "$acct";}
 
 foreach (@acctlist) {
    chomp;
    print "$_.restore.log\n";
-   open RLOG, '<', "/root/$_.restore.log";
+   open RLOG, '<', "/root/$_.restore.log" or warn "Cannot open $_.restore.log: $!\n";
    while (<RLOG>) {
       chomp;
-#      print "$&\n" if (/time stamp/);
-#      print "$&\n" if m#\.(\/\w+\.?\w+)+#;
-#      my $filepath = m#\.(\/\w+\.?\w+)+# if /time stamp/;
-#      print "$filepath\n";
       if (/time stamp/) {
          print "$&\n" if m#\.(\/\w+\.?\w+)+#;
       }
    }
 }
-#while (my $acctlist) = (@acctlist) {
-#    print $acctlist;
-#}
