@@ -7,8 +7,24 @@ use warnings;
 open GD, '<', '/root/acctlist';
 my @acctlist = (<GD>);
 #print ($_);
-print (@acctlist);
+chomp @acctlist;
+print "@acctlist\n";
 
+foreach (@acctlist) {
+   chomp;
+   print "$_.restore.log\n";
+   open RLOG, '<', "/root/$_.restore.log";
+   while (<RLOG>) {
+      chomp;
+#      print "$&\n" if (/time stamp/);
+#      print "$&\n" if m#\.(\/\w+\.?\w+)+#;
+#      my $filepath = m#\.(\/\w+\.?\w+)+# if /time stamp/;
+#      print "$filepath\n";
+      if (/time stamp/) {
+         print "$&\n" if m#\.(\/\w+\.?\w+)+#;
+      }
+   }
+}
 #while (my $acctlist) = (@acctlist) {
 #    print $acctlist;
 #}
