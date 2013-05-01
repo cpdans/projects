@@ -6,8 +6,8 @@ use warnings;
 
 open GD, '<', '/root/acctlist';
 my @acctlist = (<GD>);
-print ($_);
-#print (@acctlist);
+#print ($_);
+print (@acctlist);
 
 #while (my $acctlist) = (@acctlist) {
 #    print $acctlist;
